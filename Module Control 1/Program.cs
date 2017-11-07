@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.SymbolStore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,39 +13,67 @@ namespace Module_Control_1
         {
             Song.Songs = new Song[]
             {
-                new Song {Name = "Not Afraid", Author = "Eminem", Genre = "Rap", Length = 3.49f },
-                new Song {Name = "Rise", Author = "Skillet", Genre = "Rock" },
-                new Song {Name = "My immortal", Author = "Evanescence", Genre = "Rock" },
-                new Song {Name = "Pain", Author = "Hollywood undead", Genre = "RapCore", Length = 2.51f },
-                new Song {Name = "Paradize lost", Author =  "Hollywood undead", Genre = "RapCore", Length = 4.35f}
+                new Song {Name = "Not Afraid", Author = "Eminem", Genre = Genre.Rap, Length = 3.49f },
+                new Song {Name = "Rise", Author = "Skillet", Genre = Genre.Rock },
+                new Song {Name = "My immortal", Author = "Evanescence", Genre = Genre.Rock },
+                new Song {Name = "Paradize lost", Author =  "Hollywood undead", Genre = Genre.RapCore, Length = 4.35f},
+                new Song {Name = "Pain", Author = "Hollywood undead", Genre = Genre.RapCore, Length = 2.51f }               
             };
+            Song.PrintAll();
 
-            foreach (var song in Song.Songs)
-            {
-                if (song.Length.HasValue)
-                {
-                    Console.WriteLine($"Name = {song.Name}, Author = {song.Author}, Genre = {song.Genre}, Length = {song.Length}");
-                }
-                else
-                {
-                    Console.WriteLine($"Name = {song.Name}, Author = {song.Author}, Genre = {song.Genre}");
-                }
-            }
             // Task 1
             Console.Write("\nEnter index of song you wanna edit name: ");
             int index = int.Parse(Console.ReadLine());
             Console.Write("Enter new name of song: ");
             string newName = Console.ReadLine();
             Song.Songs[index].Name = newName;
-
             Song.PrintAll();
+
             // Task 2
             Song.TheLongest();
+
             // Task 3
-            Console.Write("\nEnter genre of songs: ");
-            string genre = Console.ReadLine();
+            Console.Write("\nEnter a genre of songs: ");
+            var genre = (Genre)Enum.Parse(typeof(Genre), Console.ReadLine());
             Song.PrintAll(genre);
-            Console.ReadKey();
+
+            // Task 4
+            ConsoleKeyInfo cki;
+            do
+            {
+                Console.WriteLine("\n\rPress 'a' to add new song\nPress 'd' to delete song\nPress ESC to quit.");
+                cki = Console.ReadKey();
+                switch (cki.Key)
+                {
+                    case ConsoleKey.A:
+                        Console.Write("\rName*: ");
+                        string name = Console.ReadLine();
+                        Console.Write("\rAuthor*: ");
+                        string author = Console.ReadLine();
+                        Console.Write("\rGenre*: ");
+                        genre = (Genre)Enum.Parse(typeof(Genre), Console.ReadLine());
+                        Console.Write("\rLength: ");
+                        float len;
+                        float? length;
+                        if (float.TryParse(Console.ReadLine(), out len))
+                        {
+                            length = len;
+                        }
+                        else
+                        {
+                            length = null;
+                        }
+                        Song.AddSong(name, author, genre, length);
+                        Song.PrintAll();
+                        break;
+                    case ConsoleKey.D:
+                        Console.Write("\rEnter index of song: ");
+                        index = int.Parse(Console.ReadLine());
+                        Song.DeleteSong(index);
+                        Song.PrintAll();
+                        break;
+                }
+            } while (cki.Key != ConsoleKey.Escape);
         }
     }
 }
