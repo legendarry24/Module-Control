@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Module_Control_1
 {
@@ -16,11 +12,10 @@ namespace Module_Control_1
         public string Author;
         public Genre Genre;
         public float? Length;
-        public static Song[] Songs;
 
-        public static void PrintAll()
+        public static void PrintAll(ref Song[] songs)
         {
-            foreach (var song in Songs)
+            foreach (var song in songs)
             {
                 Console.WriteLine(song.Length.HasValue
                     ? $"Name = {song.Name}, Author = {song.Author}, Genre = {song.Genre}, Length = {song.Length}"
@@ -28,9 +23,9 @@ namespace Module_Control_1
             }
         }
 
-        public static void PrintAll(Genre genre)
+        public static void PrintAll(ref Song[] songs, Genre genre)
         {
-            foreach (var song in Songs)
+            foreach (var song in songs)
             {
                 if (song.Genre == genre)
                 {
@@ -40,52 +35,52 @@ namespace Module_Control_1
                 }               
             }
         }
-        public static void TheLongest()
+        public static void TheLongest(ref Song[] songs)
         {
-            float max = (float)Songs[0].Length;
+            float max = (float)songs[0].Length;
             int indexOfMax = 0;
-            for (int i = 1; i < Songs.Length; i++)
+            for (int i = 1; i < songs.Length; i++)
             {
-                if (Songs[i].Length > max)          
+                if (songs[i].Length > max)          
                 {
-                    max = (float)Songs[i].Length;
+                    max = (float)songs[i].Length;
                     indexOfMax = i;
                 }
-                if (i == Songs.Length - 1)
+                if (i == songs.Length - 1)
                 {
-                    Console.WriteLine($"\nThe longest song:\n{Songs[indexOfMax].Name}, {Songs[indexOfMax].Author}," +
-                                      $" {Songs[indexOfMax].Genre}, {Songs[indexOfMax].Length} minutes");
+                    Console.WriteLine($"\nThe longest song:\n{songs[indexOfMax].Name}, {songs[indexOfMax].Author}," +
+                                      $" {songs[indexOfMax].Genre}, {songs[indexOfMax].Length} minutes");
                 }
             }
         }
 
-        public static void AddSong(string name, string author, Genre genre, float? length = null)
+        public static void AddSong(ref Song[] songs, string name, string author, Genre genre, float? length = null)
         {
-            int lastIndex = Songs.Length;
-            Song[] temp = new Song[Songs.Length + 1];
-            for (int i = 0; i < Songs.Length; i++)
+            int lastIndex = songs.Length;
+            Song[] temp = new Song[songs.Length + 1];
+            for (int i = 0; i < songs.Length; i++)
             {
-                temp[i] = Songs[i];
+                temp[i] = songs[i];
             }
-            Songs = temp;
-            Songs[lastIndex] = new Song {Name = name, Author = author, Genre = genre, Length = length};
+            songs = temp;
+            songs[lastIndex] = new Song {Name = name, Author = author, Genre = genre, Length = length};
         }
 
-        public static void DeleteSong(int index)
+        public static void DeleteSong(ref Song[] songs, int index)
         {
-            Song[] temp = new Song[Songs.Length - 1];
-            for (int i = 0; i < Songs.Length; i++)
+            Song[] temp = new Song[songs.Length - 1];
+            for (int i = 0; i < songs.Length; i++)
             {
                 if (i < index)
                 {
-                    temp[i] = Songs[i];
+                    temp[i] = songs[i];
                 }
                 else if (i > index)
                 {
-                    temp[i - 1] = Songs[i];
+                    temp[i - 1] = songs[i];
                 }               
             }
-            Songs = temp;
+            songs = temp;
         }
     }
 }

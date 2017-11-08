@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.SymbolStore;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Module_Control_1
 {
@@ -11,7 +6,7 @@ namespace Module_Control_1
     {
         static void Main(string[] args)
         {
-            Song.Songs = new Song[]
+            Song[] songs = new Song[]
             {
                 new Song {Name = "Not Afraid", Author = "Eminem", Genre = Genre.Rap, Length = 3.49f },
                 new Song {Name = "Rise", Author = "Skillet", Genre = Genre.Rock },
@@ -19,23 +14,23 @@ namespace Module_Control_1
                 new Song {Name = "Paradize lost", Author =  "Hollywood undead", Genre = Genre.RapCore, Length = 4.35f},
                 new Song {Name = "Pain", Author = "Hollywood undead", Genre = Genre.RapCore, Length = 2.51f }               
             };
-            Song.PrintAll();
+            Song.PrintAll(ref songs);
 
             // Task 1
             Console.Write("\nEnter index of song you wanna edit name: ");
             int index = int.Parse(Console.ReadLine());
             Console.Write("Enter new name of song: ");
             string newName = Console.ReadLine();
-            Song.Songs[index].Name = newName;
-            Song.PrintAll();
+            songs[index].Name = newName;
+            Song.PrintAll(ref songs);
 
             // Task 2
-            Song.TheLongest();
+            Song.TheLongest(ref songs);
 
             // Task 3
             Console.Write("\nEnter a genre of songs: ");
             var genre = (Genre)Enum.Parse(typeof(Genre), Console.ReadLine());
-            Song.PrintAll(genre);
+            Song.PrintAll(ref songs, genre);
 
             // Task 4
             ConsoleKeyInfo cki;
@@ -63,14 +58,14 @@ namespace Module_Control_1
                         {
                             length = null;
                         }
-                        Song.AddSong(name, author, genre, length);
-                        Song.PrintAll();
+                        Song.AddSong(ref songs, name, author, genre, length);
+                        Song.PrintAll(ref songs);
                         break;
                     case ConsoleKey.D:
                         Console.Write("\rEnter index of song: ");
                         index = int.Parse(Console.ReadLine());
-                        Song.DeleteSong(index);
-                        Song.PrintAll();
+                        Song.DeleteSong(ref songs, index);
+                        Song.PrintAll(ref songs);
                         break;
                 }
             } while (cki.Key != ConsoleKey.Escape);
