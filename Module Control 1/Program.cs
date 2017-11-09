@@ -14,7 +14,7 @@ namespace Module_Control_1
                 new Song {Name = "Paradize lost", Author =  "Hollywood undead", Genre = Genre.RapCore, Length = 4.35f},
                 new Song {Name = "Pain", Author = "Hollywood undead", Genre = Genre.RapCore, Length = 2.51f }               
             };
-            Song.PrintAll(ref songs);
+            Song.PrintAll(songs);
 
             // Task 1
             Console.Write("\nEnter index of song you wanna edit name: ");
@@ -22,15 +22,15 @@ namespace Module_Control_1
             Console.Write("Enter new name of song: ");
             string newName = Console.ReadLine();
             songs[index].Name = newName;
-            Song.PrintAll(ref songs);
+            Song.PrintAll(songs);
 
             // Task 2
-            Song.TheLongest(ref songs);
+            Song.TheLongest(songs);
 
             // Task 3
             Console.Write("\nEnter a genre of songs: ");
             var genre = (Genre)Enum.Parse(typeof(Genre), Console.ReadLine());
-            Song.PrintAll(ref songs, genre);
+            Song.PrintAll(songs, genre);
 
             // Task 4
             ConsoleKeyInfo cki;
@@ -59,13 +59,13 @@ namespace Module_Control_1
                             length = null;
                         }
                         Song.AddSong(ref songs, name, author, genre, length);
-                        Song.PrintAll(ref songs);
+                        Song.PrintAll(songs);
                         break;
                     case ConsoleKey.D:
                         Console.Write("\rEnter index of song: ");
                         index = int.Parse(Console.ReadLine());
                         Song.DeleteSong(ref songs, index);
-                        Song.PrintAll(ref songs);
+                        Song.PrintAll(songs);
                         break;
                 }
             } while (cki.Key != ConsoleKey.Escape);

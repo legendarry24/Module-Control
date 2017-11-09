@@ -13,7 +13,7 @@ namespace Module_Control_1
         public Genre Genre;
         public float? Length;
 
-        public static void PrintAll(ref Song[] songs)
+        public static void PrintAll(Song[] songs)
         {
             foreach (var song in songs)
             {
@@ -23,7 +23,7 @@ namespace Module_Control_1
             }
         }
 
-        public static void PrintAll(ref Song[] songs, Genre genre)
+        public static void PrintAll(Song[] songs, Genre genre)
         {
             foreach (var song in songs)
             {
@@ -35,7 +35,7 @@ namespace Module_Control_1
                 }               
             }
         }
-        public static void TheLongest(ref Song[] songs)
+        public static void TheLongest(Song[] songs)
         {
             float max = (float)songs[0].Length;
             int indexOfMax = 0;
