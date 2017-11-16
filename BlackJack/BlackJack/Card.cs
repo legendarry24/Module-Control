@@ -64,6 +64,7 @@ namespace BlackJack
                 temp[i] = hand[i];
             }
             hand = temp;
+
             int lastIndex = hand.Length - 1;
             hand[lastIndex] = deck[0]; // add 1 card from deck to hand
 
@@ -74,6 +75,41 @@ namespace BlackJack
                 temp[i-1] = deck[i];
             }
             deck = temp;
+        }
+
+        public static void AddToHand(ref Card[] hand, ref Card[] deck, int n) 
+        {
+            Card[] temp = new Card[hand.Length + n];
+            for (int i = 0; i < hand.Length; i++)
+            {
+                temp[i] = hand[i];
+            }
+            hand = temp;
+
+            int lastIndex = hand.Length - n;
+            // add various amount of cards from deck to hand
+            for (int i = 0; i < n; i++) 
+            {
+                hand[lastIndex + i] = deck[i]; 
+            }
+            
+            // remove these cards from deck
+            temp = new Card[deck.Length - n];
+            for (int i = n; i < deck.Length; i++)
+            {
+                temp[i - n] = deck[i];
+            }
+            deck = temp;
+        }
+
+        public static int ValueOfHand(Card[] hand)
+        {
+            int value = 0;
+            for (int i = 0; i < hand.Length; i++)
+            {
+                value += (int)hand[i].Number;
+            }
+            return value;
         }
     }
 }
