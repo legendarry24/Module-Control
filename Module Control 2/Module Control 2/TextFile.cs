@@ -6,7 +6,7 @@
 
         public override string ToString()
         {
-            return $"{base.ToString()}" + $"B\n\t\tContent: {Content}";
+            return $"{base.ToString()}" + $"B\n\t\tContent: \"{Content}\"";
         }
     }
 }

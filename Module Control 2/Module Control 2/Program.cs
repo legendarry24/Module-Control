@@ -28,7 +28,7 @@ namespace Module_Control_2
                         Name = attributes[0].Substring(attributes[0].IndexOf(':') + 1, attributes[0].IndexOf('(') - 1),
                         Extension = attributes[0].Substring(attributes[0].IndexOf('(') - 3, 3),
                         Size = int.Parse(attributes[0].Substring(attributes[0].IndexOf('(') + 1)),
-                        Content = attributes[1]
+                        Content = attributes[1].TrimEnd()
                     };
                 }
                 else if (substrins[i].Contains("Movie:"))
