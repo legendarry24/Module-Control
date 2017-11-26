@@ -152,7 +152,7 @@ namespace BlackJack
                     }
                     else if (Card.ValueOfHand(computersHand) >= 16 && Card.ValueOfHand(computersHand) < 18)
                     {
-                        if (chance < 45) // 45 % to make this choice
+                        if (chance < 50) // 50 % to make this choice
                         {
                             Card.AddToHand(ref computersHand, ref deck);
                         }
@@ -161,7 +161,7 @@ namespace BlackJack
                             break;
                         }
                     }
-                    else if (Card.ValueOfHand(computersHand) >= 18 && Card.ValueOfHand(computersHand) < 20)
+                    else if (Card.ValueOfHand(computersHand) >= 18 && Card.ValueOfHand(computersHand) < 21)
                     {
                         if (chance < 10) // 10 % to make this choice
                         {
@@ -206,11 +206,7 @@ namespace BlackJack
                     {
                         Console.WriteLine("Computer won!");
                         computerWinsCounter++;
-                    }
-                    else if (Card.ValueOfHand(computersHand) == Card.ValueOfHand(playersHand))
-                    {
-                        Console.WriteLine("Draw");
-                    }
+                    }                    
                     else
                     {
                         Console.WriteLine("You won!");
