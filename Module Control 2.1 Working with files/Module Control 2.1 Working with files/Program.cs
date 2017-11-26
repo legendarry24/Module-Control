@@ -96,7 +96,7 @@ namespace Module_Control_2._1_Working_with_files
             // false => rewrite file
             StreamWriter sw = new StreamWriter(writePath, false);
             Console.Write("Text files:\n");
-            sw.WriteLine("Text files:\n");
+            sw.WriteLine("Text files:");
             foreach (var file in files)
             {
                 if (file is TextFile)
@@ -107,7 +107,7 @@ namespace Module_Control_2._1_Working_with_files
             }
 
             Console.Write("Movies:\n");
-            sw.WriteLine("Movies:\n");
+            sw.WriteLine("Movies:");
             foreach (var file in files)
             {
                 if (file is Movie)
@@ -118,7 +118,7 @@ namespace Module_Control_2._1_Working_with_files
             }
 
             Console.Write("Images:\n");
-            sw.WriteLine("Images:\n");
+            sw.WriteLine("Images:");
             foreach (var file in files)
             {
                 if (file is Image)

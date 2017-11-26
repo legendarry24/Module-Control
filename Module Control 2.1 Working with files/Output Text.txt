@@ -1,5 +1,4 @@
 Text files:
-
 	file.txt
 		Extension: txt
 		Size: 6B
@@ -13,19 +12,17 @@ Text files:
 		Size: 12B
 		Content: "Another string"
 Movies:
-
 	Matrix.2000.avi
 		Extension: avi
 		Size: 16GB
 		Resolution: 1280x720
-		Length: 1h59m
+		Length: 1h59m
 	logan.2017.mkv
 		Extension: mkv
 		Size: 19GB
 		Resolution: 1920x1080
-		Length: 2h12m
+		Length: 2h12m
 Images:
-
 	MyImage.jpg
 		Extension: jpg
 		Size: 10MB
@@ -33,4 +30,5 @@ Images:
 	img.bmp
 		Extension: bmp
 		Size: 19MB
-		Resolution: 1920x1080
+		Resolution: 1920x1080
+
