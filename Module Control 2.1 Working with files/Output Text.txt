@@ -7,6 +7,10 @@ Text files:
 		Extension: txt
 		Size: 7B
 		Content: "Yet another string"
+	file2.txt
+		Extension: txt
+		Size: 8B
+		Content: "Sample text"
 	data.txt
 		Extension: txt
 		Size: 12B
@@ -16,19 +20,18 @@ Movies:
 		Extension: avi
 		Size: 16GB
 		Resolution: 1280x720
-		Length: 1h59m
+		Length: 1h59m
 	logan.2017.mkv
 		Extension: mkv
 		Size: 19GB
 		Resolution: 1920x1080
-		Length: 2h12m
+		Length: 2h12m
 Images:
 	MyImage.jpg
 		Extension: jpg
 		Size: 10MB
-		Resolution: 800x600
+		Resolution: 800x600
 	img.bmp
 		Extension: bmp
 		Size: 19MB
-		Resolution: 1920x1080
-
+		Resolution: 1920x1080

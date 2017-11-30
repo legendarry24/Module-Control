@@ -5,3 +5,4 @@ Text:file.txt(6B);Some string content
                             Movie:logan.2017.mkv(19GB);1920x1080;2h12m
                             Movie:Matrix.2000.avi(16GB);1280x720;1h59m
                             Image:MyImage.jpg(10MB);800x600
+                            Text:file2.txt(8B);Sample text
