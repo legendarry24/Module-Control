@@ -33,11 +33,8 @@ namespace Airline
             return _passengers[id];
         }
 
-        public void Update(int id, Passenger newPassenger, Flight anotherFlight = null)
+        public void Update(int id, Passenger newPassenger)
         {
-            // passenger can choose another flight 
-            if (anotherFlight != null)
-                newPassenger.FlightNumber = anotherFlight.Number;
             _passengers[id] = newPassenger;
         }
 

@@ -5,7 +5,7 @@ namespace Airline
     {
         void Insert(Passenger passenger);
         Passenger Select(int id);
-        void Update(int id, Passenger newPassenger, Flight anotherFlight);
+        void Update(int id, Passenger newPassenger);
         void Delete(string passport);
     }
 }
